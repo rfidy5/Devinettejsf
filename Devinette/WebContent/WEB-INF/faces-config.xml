@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+	<managed-bean>
+		<managed-bean-name>numberBean</managed-bean-name>
+		<managed-bean-class>fr.ifsic.tpj2ee.NumberBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>userNumber</property-name>
+			<value>0</value>
+		</managed-property>
+		<managed-property>
+			<property-name>randomNumber</property-name>
+			<value>0</value>
+		</managed-property>
+	</managed-bean>
+	<navigation-rule>
+		<from-view-id>/pages/invite.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/pages/success.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/pages/success.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>invite</from-outcome>
+			<to-view-id>/pages/invite.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<validator>
+		<validator-id>formulaireValidator</validator-id>
+		<validator-class>fr.ifsic.tpj2ee.FormulaireValidator</validator-class>
+	</validator>
+	
+	
+	<application>
+		<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
+	</application>
+</faces-config>
