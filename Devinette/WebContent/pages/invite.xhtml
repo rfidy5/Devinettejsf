@@ -6,17 +6,17 @@
 
 <f:loadBundle basename="ressources" var="msg" />
 <ui:composition template="/templates/common.xhtml">
-	<ui:define name="pageTitle">Greeting to User</ui:define>
+	<ui:define name="pageTitle">Devinette</ui:define>
 	<ui:define name="pageHeader">#{msg.greeting_title}</ui:define>
 	<ui:define name="body">
 		<h:form id="numberForm">
-#{msg.prompt}
-<h:inputText required="true" id="name" value="#{numberBean.userNumber}">
-				<f:validateLength minimum="2" maximum="10" />
+			
+			<h:outputText value="#{msg.prompt}"/>
+			<h:messages style="color: blue; font-weight: bold;"/>
+			<h:inputText required="true" id="userNumber" value="#{numberBean.userNumber}">
 				<f:validator validatorId="formulaireValidator" />
 			</h:inputText>
-			<h:message showSummary="true" showDetail="false"
-				style="color: red; font-weight: bold;" for="name" />
+			<h:commandButton id="submit" action="#{numberBean.soumettre}" value="#{msg.buttonLabel}" />
 		</h:form>
 	</ui:define>
 </ui:composition>

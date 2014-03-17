@@ -16,14 +16,15 @@ public class FormulaireValidator  implements Validator{
 	
 	public void validate(FacesContext arg0,UIComponent arg1, Object value) throws ValidatorException {
 		Pattern mask = Pattern.compile(NOM_REGEX);
-		String nom = (String)value;
+//		Integer valueint=new Integer((int) value);
+		CharSequence nom = value.toString();
+//		System.out.println("nom"+nom+"**");
 		Matcher matcher = mask.matcher(nom);
 		if (!matcher.matches()){
-			FacesMessage message = new FacesMessage();
+			FacesMessage message = new FacesMessage("Number not valid");
 			message.setDetail("Number not valid");
 			message.setSummary("Number not valid");
-			message.setSeverity(
-					FacesMessage.SEVERITY_ERROR);
+			message.setSeverity(FacesMessage.SEVERITY_ERROR);
 			throw new ValidatorException(message);
 		}
 	}
